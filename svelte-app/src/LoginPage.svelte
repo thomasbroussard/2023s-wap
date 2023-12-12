@@ -1,5 +1,7 @@
 <script lang="ts">
     import AuthenticationService from './services/AuthenticationService';
+    import { navigate } from 'svelte-routing';
+
 
     let username = '';
     let password = '';
@@ -10,6 +12,7 @@
             await AuthenticationService.login(username, password);
             // Redirect or perform other actions upon successful login
             console.log('Logged in successfully');
+            navigate('/details')
         } catch (error) {
             loginError = 'Failed to log in. Please check your credentials.';
         }
